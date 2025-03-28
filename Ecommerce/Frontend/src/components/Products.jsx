@@ -12,12 +12,11 @@ function Products() {
   const [visibleProducts, setVisibleProducts] = useState(5);
   const { cart, dispatch } = useContext(CartContext);
 
-  // Shuffle function using Fisher-Yates algorithm
   const shuffleArray = (array) => {
-    let shuffled = array.slice(); // Copy the array
+    let shuffled = array.slice(); 
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; 
     }
     return shuffled;
   };
@@ -29,7 +28,6 @@ function Products() {
         setLoading(true);
         setError(false);
         const response = await axios.get('/api/products?search=' + search, { signal: controller.signal });
-        // Shuffle the data here after fetching
         setData(shuffleArray(response.data));
       } catch (error) {
         setError(true);
@@ -63,6 +61,7 @@ function Products() {
 
   const addToCart = (product) => {
     console.log('Adding to cart:', product);
+    alert("Product added successfully!")
     dispatch({ type: 'Add', payload: product });
   };
 
@@ -79,7 +78,6 @@ function Products() {
           Shop By Category
         </h1>
 
-        {/* Search Product */}
         <div className="flex items-center gap-2 mb-8">
           <input
             type="text"
@@ -91,7 +89,6 @@ function Products() {
         </div>
 
         </div>
-        {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {data.slice(0, visibleProducts).map((item) => (
             <div
@@ -120,7 +117,6 @@ function Products() {
           ))}
         </div>
 
-        {/* Load More Button */}
         {visibleProducts < data.length && (
           <button
             className="text-gray-500 font-semibold py-2 px-2 mt-5 rounded block mx-auto"
@@ -130,7 +126,6 @@ function Products() {
           </button>
         )}
 
-        {/* Product Details Modal */}
         {selectedProduct && (
           <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center transition-opacity duration-300">
             <div className="relative bg-white shadow-lg p-6 rounded-lg w-[90%] max-w-4xl max-h-[90%] overflow-y-auto transition-transform duration-300">
@@ -160,7 +155,6 @@ function Products() {
           </div>
         )}
 
-        {/* Error Message */}
         {error && (
           <div className="text-red-500 text-center font-semibold mt-4">
             <p>Oops! Something went wrong while fetching the products.</p>

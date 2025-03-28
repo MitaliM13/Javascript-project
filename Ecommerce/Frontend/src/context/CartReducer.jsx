@@ -2,10 +2,8 @@
 const CartReducer = (state, action) => {
     switch (action.type) {
       case "Add":
-        // Check if the product already exists in the cart
         const existingProductIndex = state.findIndex(p => p.id === action.payload.id);
         if (existingProductIndex !== -1) {
-          // If the product exists, increase its quantity
           const updatedState = [...state];
           updatedState[existingProductIndex] = {
             ...updatedState[existingProductIndex],
@@ -13,7 +11,6 @@ const CartReducer = (state, action) => {
           };
           return updatedState;
         } else {
-          // Add new product with quantity of 1
           return [...state, { ...action.payload, quantity: 1 }];
         }
   
@@ -31,7 +28,7 @@ const CartReducer = (state, action) => {
         );
   
       default:
-        return state;  // Always return the current state for unhandled actions
+        return state;  
     }
   };
   

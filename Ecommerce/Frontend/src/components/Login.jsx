@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 
 const Login = () => {
@@ -28,7 +29,6 @@ const Login = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    // Validate password as user types
     if (name === 'password') {
       validatePassword(value);
     }
@@ -37,13 +37,11 @@ const Login = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    // Final password check before submission
     if (!isPasswordValid) {
       alert('Please enter a valid password.');
       return;
     }
 
-    // Simulate form submission logic (login or register)
     if (isRegisterMode) {
       console.log('Registering:', formData);
     } else {
@@ -56,7 +54,6 @@ const Login = () => {
   return (
     <>
       <div className="w-full h-screen grid lg:grid-cols-2 grid-cols-1">
-        {/* Left Side (Hidden on small screens) */}
         <div className="hidden lg:flex flex-col justify-center items-center p-8 bg-gradient-to-b from-indigo-200 to-indigo-50 rounded-lg shadow-lg">
           <h1 className="text-4xl lg:text-5xl text-indigo-900 font-extrabold mb-6 transition-transform duration-300 hover:scale-105">
             Welcome Back, Trendsetter!
@@ -66,7 +63,6 @@ const Login = () => {
           </p>
         </div>
 
-        {/* Right Side */}
         <div className="flex items-center justify-center p-4 lg:p-8">
           <form 
             className="w-full max-w-md bg-white p-6 lg:p-8 shadow-md rounded-lg" 
@@ -76,7 +72,6 @@ const Login = () => {
               {isRegisterMode ? 'Register' : 'Login'}
             </h2>
 
-            {/* Username */}
             <div className="mb-4">
               <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
               <input
@@ -90,7 +85,6 @@ const Login = () => {
               />
             </div>
 
-            {/* Email (only show if registering) */}
             {isRegisterMode && (
               <div className="mb-4">
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
@@ -106,7 +100,6 @@ const Login = () => {
               </div>
             )}
 
-            {/* Password */}
             <div className="mb-4">
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
               <input
@@ -121,7 +114,6 @@ const Login = () => {
               {passwordError && <p className="text-red-500 text-sm">{passwordError}</p>}
             </div>
 
-            {/* Submit Button */}
             <button 
               type="submit" 
               className="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors"
@@ -129,7 +121,6 @@ const Login = () => {
               {isRegisterMode ? 'Register' : 'Login'}
             </button>
 
-            {/* Switch between Login/Register */}
             <div className="mt-4 text-center">
               <button
                 type="button"

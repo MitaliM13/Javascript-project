@@ -4,7 +4,6 @@ const Contact = () => {
 
       <div className="absolute inset-0 bg-[url('')] bg-cover bg-center opacity-20"></div>
 
-      {/* Contact Heading Section */}
       <div className="relative text-center mb-12 md:mb-16">
         <h1 className="text-2xl sm:text-3xl md:text-4xl drop-shadow-lg font-extrabold mb-4">
           Connect With Us – We’re Here for You!
@@ -14,10 +13,8 @@ const Contact = () => {
         </p>
       </div>
 
-      {/* Contact Form and Map Section */}
       <div className="relative flex flex-col md:flex-row gap-12 items-start bg-gray-100 rounded-xl shadow-lg p-6 sm:p-8 lg:p-12">
         
-        {/* Contact Form */}
         <div className="flex-1 w-full md:w-1/2">
           <h2 className="text-2xl sm:text-3xl font-semibold text-heading-primary mb-6">
             Get in Touch
@@ -74,7 +71,6 @@ const Contact = () => {
           </form>
         </div>
 
-        {/* Map Section */}
         <div className="flex-1 w-full md:w-1/2">
           <h2 className="text-2xl sm:text-3xl font-semibold text-heading-primary mb-6">
             Our Location

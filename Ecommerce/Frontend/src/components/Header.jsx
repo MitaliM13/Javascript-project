@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { CartContext } from '../context/ContextProvider';
@@ -20,7 +21,6 @@ function Header() {
     setIsLoginModalOpen(!isLoginModalOpen);
   };
 
-  // Password Validation Criteria
   const validatePassword = (password) => {
     const passwordCriteria = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (!passwordCriteria.test(password)) {
@@ -38,7 +38,6 @@ function Header() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    // Validate password as user types
     if (name === 'password') {
       validatePassword(value);
     }
@@ -47,20 +46,17 @@ function Header() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    // Final password check before submission
     if (!isPasswordValid) {
       alert('Please enter a valid password.');
       return;
     }
 
-    // Simulate form submission logic (login or register)
     if (isRegisterMode) {
       console.log('Registering:', formData);
     } else {
       console.log('Logging in:', formData);
     }
 
-    // Close the modal after submission
     setIsLoginModalOpen(false);
     setFormData({ username: '', email: '', password: '' });
   };
@@ -73,7 +69,6 @@ function Header() {
             <h1 className="font-serif font-extrabold text-2xl text-white hover:drop-shadow-lg ">NovaCart</h1>
           </div>
 
-          {/* Desktop Navigation */}
           <ul className="hidden md:flex space-x-6 text-xl">
             <NavLink
               to="/hero"
@@ -109,7 +104,6 @@ function Header() {
             </NavLink>
           </ul>
 
-          {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <NavLink to="/cart" className="flex items-center space-x-2">
               <button className="px-3 py-2 rounded-lg shadow-md text-white bg-blue-600 hover:bg-header transition duration-200 ease-in-out transform hover:scale-105 flex items-center gap-2">
@@ -128,7 +122,6 @@ function Header() {
       </NavLink>
     </div>
 
-          {/* Mobile Navigation Toggle */}
           <div className="flex md:hidden">
             <button
               className="text-gray-600 hover:text-active-link focus:outline-none"
@@ -148,7 +141,6 @@ function Header() {
           </div>
         </nav>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex justify-end">
             <div className="w-64 bg-indigo-800 text-nav-text shadow-lg flex flex-col p-4 space-y-4">
