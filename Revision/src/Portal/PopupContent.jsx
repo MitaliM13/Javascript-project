@@ -1,7 +1,10 @@
 import { createPortal } from "react-dom";
 
 const PopupContent = ({ copied }) => {
-  return <section>{copied && <div>Copied to Clipboard!</div>}</section>;
+  return createPortal(
+    <section>{copied && <div>Copied to Clipboard!</div>}</section>,
+    document.querySelector("#popup-content")
+  );
 };
 
 export default PopupContent;

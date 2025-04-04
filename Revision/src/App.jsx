@@ -1,10 +1,10 @@
 import "./App.css";
-import CopyInput from "./Portal/CopyInput";
+import CounterEffect from "./UseEffect/CounterEffect";
 
 function App() {
   return (
     <>
-      <CopyInput />
+      <CounterEffect />
     </>
   );
 }
